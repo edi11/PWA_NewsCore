@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>NEWS CORE news portal</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="css/carousel.css" rel="stylesheet">
+
+
+</head>
+<!-- NAVBAR
+================================================== -->
+<body>
+
+<div class="navbar-wrapper">
+    <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                            aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="logo"
+                                                                   style="width:120px;"></a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse" style="height: 90px;">
+                    <ul class="nav navbar-nav" style="margin-top: 20px; background-color: white; border-radius: 20px;">
+                        <li><a href="index.html">Home</a></li>
+                        <li class="active"><a href="#">O Nama</a></li>
+                        <li><a href="http://www.tvz.hr/">TVZ</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </div>
+</div>
+
+<header>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img class="first-slide" src="img/placeholder.jpg" alt="First slide">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1 style="font-size: 72px;">O NAMA</h1>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+</header>
+
+<script type="text/javascript">
+function validate(){
+
+    var vrati=true;
+
+    var tekst1 = document.getElementById("naslovvijesti").value;
+    var tekstbox1 = document.getElementById("naslovvijesti");
+    if (tekst1.length < 5 || tekst1.length > 30 ) {
+        document.getElementById("poruka").innerHTML="Naslov mora imati min 5 i max 30 znakova";
+        vrati=false;
+        tekstbox1.style.border="2px solid red";
+    } else{
+        document.getElementById("poruka").innerHTML="";
+        tekstbox1.style.border="";
+    }
+
+    var tekst2 = document.getElementById("sazetak").value;
+    var tekstbox2 = document.getElementById("sazetak");
+    if (tekst2.length < 10 || tekst1.length > 100 ) {
+        document.getElementById("poruka2").innerHTML="Sazetak mora imati min 10 i max 100 znakova";
+        vrati=false;
+        tekstbox2.style.border="2px solid red";
+    } else{
+        document.getElementById("poruka2").innerHTML="";
+        tekstbox2.style.border="";
+    }
+
+    var tekst3 = document.getElementById("sadrzaj").value;
+    var tekstbox3 = document.getElementById("sadrzaj");
+    if (tekst3.length < 10 || tekst1.length > 1000 ) {
+        document.getElementById("poruka3").innerHTML="Tekst mora imati min 10 i max 1000 znakova";
+        vrati=false;
+        tekstbox3.style.border="2px solid red";
+    } else{
+        document.getElementById("poruka3").innerHTML="";
+        tekstbox3.style.border="";
+    }
+
+    var kategorija = document.getElementById("kategorije").value;
+   var kategorijabox = document.getElementById("kategorije");
+    if (kategorija=="none"){
+        document.getElementById("poruka4").innerHTML="Kategorija mora biti odabrana";
+        vrati=false;
+        kategorijabox.style.border="2px solid red";
+    } else{
+        document.getElementById("poruka4").innerHTML="";
+        kategorijabox.style.border="";
+    }
+
+    if(document.getElementById("prikaz").checked==true && vrati == true){
+        var a = confirm("Jeste li sigurni da želite prikazati vijest?");
+        if(a!=true){
+            vrati = false;
+        }
+    }
+
+    return vrati;
+}
+</script>
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="text-center" style="margin-left:30px; margin-bottom: 30px;">
+                <form name="forma" action="skripta.php" method="POST" onsubmit="return(validate());">
+                    <label for="naslovvijesti">Naslov vijesti:</label>
+                    <input id="naslovvijesti" type="text" name="naslov"/>
+                    <div style="color:red" id="poruka"></div>
+                    <br>
+
+                    <label for="sazetak">Sažetak vijesti:</label>
+                    <textarea id="sazetak" name="sazetak"></textarea>
+                    <div style="color:red" id="poruka2"></div>
+                    <br>
+
+                    <label for="sadrzaj">Sadržaj vijesti:</label>
+                    <textarea id="sadrzaj" name="sadrzaj"></textarea>
+                    <div style="color:red" id="poruka3"></div>
+                    <br>
+
+                    <label for="kategorije">Kategorija vijesti:</label>
+                    <select id="kategorije" name="kategorije">
+                        <option value="none">---</option>
+                        <option value="Politika">Politika</option>
+                        <option value="Sport">Sport</option>
+                        <option value="Kultura">Kultura</option>
+                        <option value="Crna kronika">Crna kronika</option>
+                        <option value="Tech">Tech</option>
+                    </select>
+                    <div style="color:red" id="poruka4"></div>
+                    <br>
+
+                    <label for="prikaz">Prikaži vijest</label>
+                    <input type="checkbox" id="prikaz" name="prikaz" value="TRUE">
+                    <br>
+                    <input type="submit" value="Pošalji">
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<footer>
+    <div class="container-fluid">
+        <div class="row" id="footer">
+
+
+            <p class="text-center footer_text">&copy; 2016 NEWS CORE d.o.o. </p>
+            <p class="text-center footer_text">Edi Ferhatović </p>
+            <p class="text-center footer_text"> e-mail: eferhatov@tvz.hr</p>
+
+        </div>
+    </div>
+</footer>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="js/bootstrap.min.js"></script>
+
+</body>
+</html>
