@@ -72,7 +72,7 @@
                 <img class="first-slide" src="img/placeholder.jpg" alt="First slide">
                 <div class="container">
                     <div class="carousel-caption">
-                        <h1>Prva udarna vijest</h1>
+                        <h1>Druga udarna vijest</h1>
                         <p>Dogodilo se nešto</p>
                         <p><a class="btn btn-lg btn-primary" href="#" role="button">Pročitaj više</a></p>
                     </div>
